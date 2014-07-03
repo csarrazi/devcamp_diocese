@@ -1,0 +1,7 @@
+parameters:
+#    devcamp_supporter.example.class: Devcamp\Bundle\SupporterBundle\Example
+
+services:
+#    devcamp_supporter.example:
+#        class: %devcamp_supporter.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

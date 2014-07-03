@@ -1,0 +1,31 @@
+{% extends "DevcampPlayerBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <h3>Listes des joueurs :</h3>
+                <a href="{{ path('devcamp_player_add') }}">Ajouter un joueur</a>
+                <table>
+                {% for player in players %}
+                    <tr>
+                        <td>{{ player.username }}</td>
+                        <td>{{ player.team }}</td>
+                        <td>{{ player.cellphone }}</td>
+                        <td>{% if player.health.weight %}{{ player.health.weight }} kg{% endif %}</td>
+                        <td>{% if player.health.size %}{{ player.health.size }} cm{% endif %}</td>
+                        <td><a href="{{ path('devcamp_player_update', {'id': player.id}) }}" class="btn btn-primary btn-lg active" role="button">Modifier</a></td>
+                        <td><a href="{{ path('devcamp_player_delete', {'id': player.id}) }}" class="btn btn-primary btn-lg active" role="button">Supprimer</a></td>
+                    </tr>
+                {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

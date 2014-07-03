@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="devcamp_core.my_date.date">+ 2 days</parameter>
+        <parameter key="devcamp_core.user_manager.class">Devcamp\Bundle\CoreBundle\Manager\UserManager</parameter>
+        <parameter key="devcamp_core.listener.login.class">Devcamp\Bundle\CoreBundle\EventListener\LoginListener</parameter>
+    </parameters>
+
+    <services>
+        <service id="devcamp_core.user_manager" class="%devcamp_core.user_manager.class%">
+            <argument type="service" id="security.encoder_factory" />
+            <argument type="service" id="logger" />
+        </service>
+
+        <service id="devcamp_core.listener.login" class="%devcamp_core.listener.login.class%">
+            <argument type="service" id="doctrine.orm.entity_manager" />
+            <tag name="kernel.event_subscriber" />
+        </service>
+    </services>
+
+</container>

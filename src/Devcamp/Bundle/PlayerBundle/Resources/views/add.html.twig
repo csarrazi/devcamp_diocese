@@ -1,0 +1,17 @@
+{% extends "DevcampPlayerBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+               {{ form(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

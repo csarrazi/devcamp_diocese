@@ -1,0 +1,8 @@
+parameters:
+    devcamp_player.form.type.health.class: Devcamp\Bundle\PlayerBundle\Form\HealthType
+
+services:
+    devcamp_player.form.type.health:
+        class: %devcamp_player.form.type.health.class%
+        tags:
+            - { name: form.type, alias: health }

@@ -1,0 +1,15 @@
+devcamp_player_add:
+    path:     /add
+    defaults: { _controller: DevcampPlayerBundle:Create:add }
+
+devcamp_player_list:
+    path:     /list
+    defaults: { _controller: DevcampPlayerBundle:Create:list }
+
+devcamp_player_update:
+    path:     /edit/{id}
+    defaults: { _controller: DevcampPlayerBundle:Update:edit }
+
+devcamp_player_delete:
+    path:     /delete/{id}
+    defaults: { _controller: DevcampPlayerBundle:Update:delete }

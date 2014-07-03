@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Devcamp du Diocèse de Paris{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <style>
+            td {
+                padding:3px 10px;
+            }
+        </style>
+    {% endblock %}
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <img src="{{ asset('image/banner.jpg') }}" />
+            </div>
+        </div>
+    </div>
+
+
+    {% block body %}
+    {% endblock %}
+
+    {% block footer %}
+    <div class="footer">
+        <div class="container">
+        Creative Commons CC by-nc-nd 3.0
+         </div>
+    </div>
+    {% endblock %}
+
+</body>
+
+</html>

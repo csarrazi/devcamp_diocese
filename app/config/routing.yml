@@ -1,0 +1,23 @@
+login_check:
+    path: /login-check
+    methods: "POST"
+
+# login_check:
+#     path: /login-check
+#     requirements:
+#         _method: "POST"
+
+logout:
+    path: /logout
+    methods: "GET"
+
+devcamp_core:
+    resource: "@DevcampCoreBundle/Resources/config/routing.yml"
+
+devcamp_supporter:
+    resource: "@DevcampSupporterBundle/Resources/config/routing.yml"
+    prefix:   /supporter
+
+devcamp_player:
+    resource: "@DevcampPlayerBundle/Resources/config/routing.yml"
+    prefix:   /player

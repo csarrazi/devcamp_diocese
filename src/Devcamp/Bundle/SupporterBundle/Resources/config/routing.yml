@@ -1,0 +1,7 @@
+devcamp_supporter_adress_add:
+    path:     /address/add
+    defaults: { _controller: DevcampSupporterBundle:CreateAddress:add }
+
+devcamp_supporter_adress_list:
+    path:     /address/list
+    defaults: { _controller: DevcampSupporterBundle:CreateAddress:list }

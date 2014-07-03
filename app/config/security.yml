@@ -1,0 +1,56 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        Devcamp\Bundle\CoreBundle\Entity\User: sha256
+
+    role_hierarchy:
+        ROLE_PLAYER: ROLE_USER
+        ROLE_SUPPORTER: ROLE_USER
+        ROLE_ADMIN: [ROLE_PLAYER, ROLE_SUPPORTER]
+
+    providers:
+        chained:
+            chain:
+                providers:
+                    - "players_database"
+                    - "supporters_database"
+                    - "users_memory"
+        players_database:
+            entity: { class: "DevcampPlayerBundle:Player", property: username }
+        supporters_database:
+            entity: { class: "DevcampSupporterBundle:Supporter", property: username }
+        users_memory:
+            memory:
+                users:
+                    admin: { password: admin, roles: ["ROLE_ADMIN"] }
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        login:
+            pattern: ^/login$
+            security: false
+
+        devcamp:
+            pattern: ^/
+            provider: chained
+            switch_user:
+                parameter: switch
+                role: ROLE_ADMIN
+            # http_basic:
+            #     realm: Bienvenue au Devcamp du Diocese
+            form_login:
+                check_path: login_check
+                default_target_path: devcamp_player_list
+                login_path: devcamp_core_login
+                always_use_default_target_path: true
+            logout:
+                path: logout
+                target: devcamp_core_login
+
+    access_control:
+        - { path: ^/supporter, roles: ROLE_SUPPORTER }
+        - { path: ^/player, roles: ROLE_PLAYER }
+        - { path: ^/, roles: ROLE_USER }
